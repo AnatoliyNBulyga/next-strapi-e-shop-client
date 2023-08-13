@@ -4,7 +4,8 @@ const nextConfig = {
         domains: [
             "img2.ans-media.com",
             "127.0.0.1",
-            "localhost"
+            "localhost",
+            "api.webmaestro.online"
         ]
     },
     async redirects() {
