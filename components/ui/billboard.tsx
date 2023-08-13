@@ -12,7 +12,7 @@ const Billboard: React.FC<BillboardProps> = ({
     data,
     bgPosition = "top"
 }) => {
-    const imageSrc = data?.attributes?.image?.data?.attributes?.url;
+    const imageSrc = `${process.env.NEXT_PUBLIC_UPLOAD_URL}${data?.attributes?.image?.data?.attributes?.url}`;
 
     return (
         <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
