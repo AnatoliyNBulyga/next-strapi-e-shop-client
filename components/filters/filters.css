@@ -1,0 +1,183 @@
+.custom.multi-range-slider * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+.custom.multi-range-slider {
+    display: flex;
+    position: relative;
+    border-radius: 2px;
+    flex-direction: column;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge,*/
+    border: none;
+    box-shadow: none;
+    padding: 15px 10px;
+}
+.custom.multi-range-slider .bar {
+    display: flex;
+}
+.custom.multi-range-slider .bar-left {
+    width: 25%;
+    background-color: #94a3b8;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    border: 1px solid white;
+}
+.custom.multi-range-slider .bar-right {
+    width: 25%;
+    background-color: #f1f5f9;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid white;
+    height: 6px;
+}
+.custom.multi-range-slider .bar-inner {
+    background-color: lime;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid white;
+    box-shadow: none;
+}
+.custom.multi-range-slider .bar-inner-left {
+    width: 50%;
+}
+.custom.multi-range-slider .bar-inner-right {
+    width: 50%;
+}
+.custom.multi-range-slider .thumb {
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+.custom.multi-range-slider .thumb::before {
+    content: '';
+    background-color: inherit;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: solid 1px #abaeb4;
+    box-shadow: none;
+    border-radius: 50%;
+    z-index: 1;
+    margin: -5px -12px;
+    cursor: pointer;
+}
+.custom.multi-range-slider .input-type-range:focus + .thumb::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -7px;
+    width: 11px;
+    height: 11px;
+    z-index: 2;
+    border-radius: 50%;
+    border: dotted 1px black;
+    box-shadow: none;
+}
+.custom.multi-range-slider .caption {
+    position: absolute;
+    bottom: 35px;
+    width: 2px;
+    height: 2px;
+    left: 1px;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    display: none;
+}
+.custom.multi-range-slider .thumb .caption * {
+    position: absolute;
+    min-width: 60px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    background-color: rgba(234, 179, 8, .9);
+    border-radius: 2px;
+    color: black;
+    box-shadow: none;
+    padding: 0 5px;
+    white-space: nowrap;
+}
+.custom.multi-range-slider .thumb:active .caption {
+    display: flex;
+}
+.custom.multi-range-slider .input-type-range:focus + .thumb .caption {
+    display: flex;
+}
+.custom.multi-range-slider .input-type-range {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.custom.multi-range-slider .ruler {
+    margin: 10px 0 -5px 0;
+    display: flex;
+    overflow: hidden;
+}
+.custom.multi-range-slider .ruler .ruler-rule {
+    border-left: solid 1px;
+    border-bottom: solid 1px;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 5px 0;
+}
+.custom.multi-range-slider .ruler .ruler-rule:last-child {
+    border-right: solid 1px;
+}
+
+.custom.multi-range-slider .ruler .ruler-sub-rule {
+    border-left: solid 1px;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 3px 0;
+    bottom: 0;
+    margin-bottom: -5px;
+}
+.custom.multi-range-slider .ruler .ruler-sub-rule:first-child {
+    border-left: none;
+}
+
+.custom.multi-range-slider .labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    /* display: none; */
+}
+.custom.multi-range-slider .label {
+    font-size: 80%;
+    display: flex;
+    width: 1px;
+    justify-content: center;
+}
+.custom.multi-range-slider .label:first-child {
+    justify-content: start;
+}
+.custom.multi-range-slider .label:last-child {
+    justify-content: end;
+}
+.custom.multi-range-slider.zero-ranage-margin .thumb-left {
+    right: 12px;
+}
+.custom.multi-range-slider.zero-ranage-margin .thumb-right {
+    left: 8px;
+}
