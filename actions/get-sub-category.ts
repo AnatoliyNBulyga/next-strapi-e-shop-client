@@ -2,7 +2,7 @@ import {SubCategory} from "@/types";
 import qs from "qs";
 import {$api} from "@/utils/http";
 
-const getSubCategory = async (id: string): Promise<SubCategory> => {
+const getSubCategory = async (id: string): Promise<SubCategory | null> => {
 
     const query = qs.stringify({
         populate: {
@@ -20,9 +20,16 @@ const getSubCategory = async (id: string): Promise<SubCategory> => {
 
     const URL = `sub-categories?${query}`;
 
-    const res = await $api.get(URL);
+    try {
+        const res = await $api.get(URL)
 
-    return res.data.data[0];
+        return res.data.data;
+
+    } catch (error) {
+        console.log(error, 'Error from get sub category by id');
+        return null;
+    }
+
 }
 
 export default getSubCategory;

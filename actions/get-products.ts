@@ -23,7 +23,7 @@ const getProducts = async ({
     type,
     minPrice = '0',
     maxPrice = '5000'
-}: Query): Promise<Product[]> => {
+}: Query): Promise<Product[] | null> => {
 
     const queryParams = qs.stringify({
         populate: '*',
@@ -40,9 +40,16 @@ const getProducts = async ({
 
     const URL = `products?${queryParams}`;
 
-    const res = await $api.get(URL);
+    try {
+        const res = await $api.get(URL)
 
-    return res.data.data;
+        return res.data.data;
+
+    } catch (error) {
+        console.log(error, 'Error from get products');
+        return null;
+    }
+
 }
 
 export default getProducts;

@@ -13,8 +13,8 @@ import {useParams, usePathname} from "next/navigation";
 import {IoClose} from "react-icons/io5";
 
 interface MobileMenuProps {
-    categories: Category[],
-    subcategories: SubCategory[]
+    categories: Category[] | null,
+    subcategories: SubCategory[] | null
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -29,12 +29,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     const onOpen = () => setOpen(true);
     const onClose = () => setOpen(false);
 
-    const categoryRoutes: { href: string, label: string, active: boolean }[] = categories.map((route: Category) => ({
+    const categoryRoutes: { href: string, label: string, active: boolean }[] | null = categories && categories.map((route: Category) => ({
         href: `/category/${route.id}`,
         label: route.attributes?.name,
         active: categoryId === `${route.id}`
     }));
-    const subcategoryRoutes: { href: string, label: string, active: boolean }[] = subcategories.map((route: SubCategory) => ({
+    const subcategoryRoutes: { href: string, label: string, active: boolean }[] | null = subcategories && subcategories.map((route: SubCategory) => ({
         href: `/category/${categoryId}/subcategory/${route.id}`,
         label: route.attributes?.name,
         active: pathname === `/category/${categoryId}/subcategory/${route.id}`
@@ -81,7 +81,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                                     </div>
                                     <div className="p-4">
                                         {
-                                            categoryRoutes.map((route) => (
+                                            categoryRoutes && categoryRoutes.map((route) => (
                                                 <Link
                                                     key={route.href}
                                                     href={route.href}
@@ -102,7 +102,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 
                                     <div className="p-4">
                                         {
-                                            subcategoryRoutes.map((route) => (
+                                            subcategoryRoutes && subcategoryRoutes.map((route) => (
                                                 <Link
                                                     key={route.href}
                                                     href={route.href}

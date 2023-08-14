@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 
 import Button from "@/components/ui/button";
@@ -14,14 +14,18 @@ import {$api} from "@/utils/http";
 
 interface SummaryProps {
     totalPrice: number;
+    currentUser: any;
 }
 const Summary: React.FC<SummaryProps> = ({
-    totalPrice
+    totalPrice,
+    currentUser
 }) => {
+
     const searchParams = useSearchParams();
     const products = useCart((state) => state.items);
     const removeAll = useCart((state) => state.removeAll);
     const router = useRouter();
+    const isDisabled = products.length === 0 || !currentUser;
 
     useEffect(() => {
         if (searchParams.get('success')) {
@@ -65,9 +69,14 @@ const Summary: React.FC<SummaryProps> = ({
                     <Currency value={totalPrice} />
                 </div>
             </div>
-            <Button onClick={onCheckout} disabled={products.length === 0} className="w-full mt-6">
-                Checkout
-            </Button>
+            <div className="flex flex-col mb-2">
+                <Button onClick={onCheckout} disabled={isDisabled} className="w-full mt-6">
+                    Checkout
+                </Button>
+                {
+                    (isDisabled) && <div className="mt-2 text-red-600">Only logged in users can get checkout!</div>
+                }
+            </div>
         </div>
     );
 }

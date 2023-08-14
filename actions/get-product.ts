@@ -3,7 +3,7 @@ import qs from "qs";
 import {$api} from "@/utils/http";
 
 
-const getProduct = async (id: string): Promise<Product> => {
+const getProduct = async (id: string): Promise<Product | null> => {
 
     const query = qs.stringify({
         populate: '*',
@@ -16,9 +16,14 @@ const getProduct = async (id: string): Promise<Product> => {
 
     const URL = `products?${query}`;
 
-    const res = await $api.get(URL);
+    try {
+        const res = await $api.get(URL);
+        return res.data.data[0]
 
-    return res.data.data[0];
+    } catch (error) {
+        console.log(error, 'Error from get product by id');
+        return null;
+    }
 }
 
 export default getProduct;

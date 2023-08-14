@@ -7,7 +7,7 @@ const fakeData = {
     name: 'Men',
 }
 
-const getCategory = async (id: string): Promise<Category> => {
+const getCategory = async (id: string): Promise<Category | null> => {
 
     const query = qs.stringify({
         populate: '*',
@@ -20,9 +20,14 @@ const getCategory = async (id: string): Promise<Category> => {
 
     const URL = `categories?${query}`;
 
-    const res = await $api.get(URL);
+    try {
+        const res = await $api.get(URL);
+        return res.data.data[0]
 
-    return res.data.data[0];
+    } catch (error) {
+        console.log(error, 'Error from get category');
+        return null;
+    }
 }
 
 export default getCategory;

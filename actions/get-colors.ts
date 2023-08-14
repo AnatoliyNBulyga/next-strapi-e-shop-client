@@ -2,16 +2,21 @@ import { Color } from "@/types";
 import qs from "qs";
 import {$api} from "@/utils/http";
 
-const getColors = async (): Promise<Color[]> => {
+const getColors = async (): Promise<Color[] | null> => {
     const query = qs.stringify({
         populate: '*',
     });
 
     const URL = `colors?${query}`;
 
-    const res = await $api.get(URL);
+    try {
+        const res = await $api.get(URL);
+        return res.data.data[0]
 
-    return res.data.data;
+    } catch (error) {
+        console.log(error, 'Error from get colors');
+        return null;
+    }
 }
 
 export default getColors;
