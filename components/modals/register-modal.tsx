@@ -164,15 +164,15 @@ const RegisterModal = () => {
                         />
                         Continue with Google
                     </Button>
-                    <Button
-                        className="bg-white border-2 border-black text-black relative"
-                    >
-                        <AiFillGithub
-                            size={24}
-                            className="absolute left-4 top-3"
-                        />
-                        Continue with Github
-                    </Button>
+                    {/*<Button*/}
+                    {/*    className="bg-white border-2 border-black text-black relative"*/}
+                    {/*>*/}
+                    {/*    <AiFillGithub*/}
+                    {/*        size={24}*/}
+                    {/*        className="absolute left-4 top-3"*/}
+                    {/*    />*/}
+                    {/*    Continue with Github*/}
+                    {/*</Button>*/}
                     <div
                         className="text-neutral-500 text-center mt-4 font-light"
                     >
