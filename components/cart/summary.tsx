@@ -74,7 +74,7 @@ const Summary: React.FC<SummaryProps> = ({
                     Checkout
                 </Button>
                 {
-                    (isDisabled) && <div className="mt-2 text-red-600">Only logged in users can get checkout!</div>
+                    (isDisabled) && <div className="mt-4 text-red-600 text-sm flex justify-center">Only logged in users can get checkout!</div>
                 }
             </div>
         </div>

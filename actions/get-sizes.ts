@@ -2,22 +2,16 @@ import { Size } from "@/types";
 import qs from "qs";
 import {$api} from "@/utils/http";
 
-const getSizes = async (): Promise<Size[] | null> => {
+const getSizes = async (): Promise<Size[]> => {
     const query = qs.stringify({
         populate: '*',
     });
 
     const URL = `sizes?${query}`;
 
-    try {
-        const res = await $api.get(URL)
+    const res = await $api.get(URL)
 
-        return res.data.data;
-
-    } catch (error) {
-        console.log(error, 'Error from get sizes');
-        return null;
-    }
+    return res.data.data;
 }
 
 export default getSizes;

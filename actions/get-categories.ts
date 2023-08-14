@@ -2,7 +2,7 @@ import { Category } from "@/types";
 import qs from "qs";
 import {$api} from "@/utils/http";
 
-const getCategories = async (): Promise<Category[] | null> => {
+const getCategories = async (): Promise<Category[]> => {
 
     const query = qs.stringify({
         populate: '*',
