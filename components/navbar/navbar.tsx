@@ -17,8 +17,6 @@ const Navbar = async () => {
     const subCategories = await getSubCategories();
     const currentUser = await getCurrentUser();
 
-    console.log('currentUser ', currentUser);
-
     return (
         <div className="border-b">
             <Container>
