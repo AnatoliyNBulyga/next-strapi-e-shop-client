@@ -76,10 +76,15 @@ const RegisterModal = () => {
         loginModal.onOpen();
     }, [loginModal, registerModal]);
 
+    const onClosePopup = () => {
+        reset();
+        registerModal.onClose();
+    }
+
     return (
         <Modal
             open={registerModal.isOpen}
-            onClose={registerModal.onClose}
+            onClose={onClosePopup}
         >
             <form onSubmit={handleSubmit(onSubmit)} className="relative p-2 sm:p-6 w-full">
                 <div className="flex flex-col gap-4 mb-6">
@@ -147,7 +152,7 @@ const RegisterModal = () => {
                         disabled={isLoading}
                         type="submit"
                     >
-                        Login
+                        Create
                     </Button>
 
                     <div className="flex items-center justify-center gap-2">
