@@ -25,18 +25,18 @@ const CartItem: React.FC<CartItemProps> = ({
     const cart = useCart();
 
     const onRemove = () => {
-        cart.removeItem(data.product.id);
+        cart.removeItem(data?.product?.id);
     };
 
-    const sizes = data.product?.attributes?.sizes?.data;
-    const colors = data.product?.attributes?.colors?.data;
+    const sizes = data?.product?.attributes?.sizes?.data;
+    const colors = data?.product?.attributes?.colors?.data;
 
-    const imageSrc = `${process.env.NEXT_PUBLIC_UPLOAD_URL}${data?.product?.attributes?.images?.data[0]?.attributes?.url}`;
+    const imageSrc = data?.product?.attributes?.images?.data[0]?.attributes?.url;
     const alt = data?.product?.attributes?.images?.data[0]?.attributes?.alternativeText ?? "Product preview";
 
     return (
         <li className="flex py-6 border-b">
-            <Link href={`/product/${data.product?.id}`} className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
+            <Link href={`/product/${data?.product?.id}`} className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
                 <Image
                     fill
                     src={imageSrc}

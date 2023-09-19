@@ -5,7 +5,8 @@ const nextConfig = {
             "img2.ans-media.com",
             "127.0.0.1",
             "localhost",
-            "a-store-api-production.up.railway.app"
+            "a-store-api-production.up.railway.app",
+            "res.cloudinary.com"
         ]
     },
     async redirects() {

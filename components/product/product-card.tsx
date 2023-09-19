@@ -39,8 +39,8 @@ const ProductCard: React.FC<ProductCard> = ({
         cart.addItem(data);
     };
 
-    const imageSrc = `${process.env.NEXT_PUBLIC_UPLOAD_URL}${data.attributes.images?.data[0]?.attributes?.url}`;
-    const alt = data.attributes.images?.data[0]?.attributes?.alternativeText ?? "Product preview";
+    const imageSrc = data?.attributes?.images?.data[0]?.attributes?.url;
+    const alt = data?.attributes?.images?.data[0]?.attributes?.alternativeText ?? "Product preview";
 
     return (
         <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
