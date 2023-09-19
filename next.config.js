@@ -5,7 +5,7 @@ const nextConfig = {
             "img2.ans-media.com",
             "127.0.0.1",
             "localhost",
-            "api.webmaestro.online"
+            "a-store-api-production.up.railway.app"
         ]
     },
     async redirects() {

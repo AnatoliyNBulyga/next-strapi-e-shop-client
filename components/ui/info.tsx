@@ -64,7 +64,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
                                 key={size.id}
                                 className={`${index < arr.length - 1 ? "border-r border-gray-300 pr-3" : ""}`}
                             >
-                                {size.attributes?.name}
+                                {size.attributes?.value}
                             </div>
                         ))
                     }
